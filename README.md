@@ -14,7 +14,7 @@ This scripts will generate the dist package of application using vite runtime.
 
 ## Rights
 
-This project is under the MIT licence. You can read /[HERE.](LICENSE)
+This project is under the MIT licence. You can read [HERE.](LICENSE)
 
 ## Author
 
