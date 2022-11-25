@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Card from './components/base/Card.svelte'
+  import Todo from './layout/Todo.svelte'
 </script>
 
-<main class="h-screen grid place-items-center bg-gray-900">
-  <Card title="TODO App"></Card>
+<main>
+  <Todo />
 </main>
