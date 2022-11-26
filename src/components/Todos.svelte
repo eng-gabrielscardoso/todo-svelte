@@ -80,7 +80,7 @@
       </form>
     </div>
     {#if todos.length > 0}
-      <ul>
+      <ul class="h-96 overflow-y-scroll customised-scroll px-2">
         {#each todos as todo, index}
           <li class="my-1 flex gap-2 justify-between items-center align-center">
             <div class="flex gap-2 w-full truncate overflow-hidden">
@@ -104,7 +104,7 @@
         {/each}
       </ul>
     {:else}
-      <div class="text-center">
+      <div class="h-96 grid place-items-center">
         <quote>
           <i>"Today is always a task..."</i>
         </quote>
