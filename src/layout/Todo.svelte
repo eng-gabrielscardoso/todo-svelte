@@ -5,8 +5,10 @@
 
 <main class={`${$$props.class}`}>
   <div class="h-screen grid place-items-center bg-gray-900">
-    <Card title="TODO App" class="p-2">
-      <Todos class="my-2" />
-    </Card>
+    <div class="w-full max-w-screen-sm">
+      <Card title="TODO App" class="p-2">
+        <Todos class="my-2" />
+      </Card>
+    </div>
   </div>
 </main>

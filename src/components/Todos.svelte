@@ -56,10 +56,13 @@
         </div>
       {/each}
     {/if}
-    <div class="flex gap-2 justify-between items-center align-center">
-      <form on:submit={event => addTodo(event)}>
+    <div>
+      <form
+        on:submit={(event) => addTodo(event)}
+        class="flex gap-2 justify-between items-center align-center"
+      >
         <input
-          class="px-2 py-1 bg-gray-100 rounded-md"
+          class="w-full px-2 py-1 bg-gray-100 rounded-md"
           type="text"
           name="todoInput"
           id="todoInput"
@@ -72,7 +75,7 @@
           class={`p-1 bg-blue-600 text-white rounded-md cursor-pointer ${
             !todoInput ? "bg-gray-300" : ""
           }`}
-          on:click={event => addTodo(event)}>Add</button
+          on:click={(event) => addTodo(event)}>Add</button
         >
       </form>
     </div>
@@ -80,23 +83,22 @@
       <ul>
         {#each todos as todo, index}
           <li class="my-1 flex gap-2 justify-between items-center align-center">
-            <div>
+            <div class="flex gap-2 w-full truncate overflow-hidden">
               <input
                 type="checkbox"
                 name=""
                 id=""
                 bind:checked={todo.checked}
               />
-              <span class={`${todo.checked ? "line-through" : ""}`}
-                >{index + 1} - {todo.text}</span
-              >
+              <p class={`${todo.checked ? "line-through" : ""}`}>
+                {index + 1} - {todo.text}
+              </p>
             </div>
-            <button class="px-2 bg-red-600 rounded-md">
-              <i
-                class="fa fa-trash text-white"
-                aria-hidden="true"
-                on:click={() => removeTodo(index)}
-              />
+            <button
+              class="px-2 bg-red-600 rounded-md"
+              on:click={() => removeTodo(index)}
+            >
+              <i class="fa fa-trash text-white" aria-hidden="true" />
             </button>
           </li>
         {/each}
