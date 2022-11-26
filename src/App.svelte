@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Todo from './layout/Todo.svelte'
+  import Todo from "./layout/Todo.svelte";
 </script>
 
 <main>

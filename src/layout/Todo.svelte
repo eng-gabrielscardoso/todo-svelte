@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Card from "../components/base/Card.svelte"
-  import Todos from "../components/Todos.svelte"
+  import Card from "../components/base/Card.svelte";
+  import Todos from "../components/Todos.svelte";
 </script>
 
 <main class={`${$$props.class}`}>

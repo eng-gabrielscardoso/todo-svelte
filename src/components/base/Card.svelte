@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let title: string = "Card Title"
+  export let title: string = "Card Title";
 </script>
 
 <div class={`${$$props.class}`}>

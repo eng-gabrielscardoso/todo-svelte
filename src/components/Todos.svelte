@@ -1,14 +1,16 @@
 <script lang="ts">
-  import { onMount } from "svelte"
+  import { onMount } from "svelte";
 
-  let inputTarget: HTMLInputElement
-  let todoInput: string
+  let inputTarget: HTMLInputElement;
+  let todoInput: string;
 
-  onMount(() => inputTarget.focus())
+  onMount(() => inputTarget.focus());
 
-  function addTodo(): void {
+  function addTodo(event): void {
+    event.preventDefault();
+
     if (todoInput.length < 3) {
-      errors = [...errors, "Too small input"]
+      errors = [...errors, "Too small input"];
     } else {
       todos = [
         ...todos,
@@ -16,24 +18,24 @@
           text: todoInput,
           checked: false,
         },
-      ]
+      ];
 
-      todoInput = ""
+      todoInput = "";
     }
   }
 
   function removeTodo(index): void {
-    todos.splice(index, 1)
-    todos = [...todos]
+    todos.splice(index, 1);
+    todos = [...todos];
   }
 
   function removeError(index): void {
-    errors.splice(index, 1)
-    errors = [...errors]
+    errors.splice(index, 1);
+    errors = [...errors];
   }
 
-  $: todos = []
-  $: errors = []
+  $: todos = [];
+  $: errors = [];
 </script>
 
 <section class={`${$$props.class}`}>
@@ -55,29 +57,36 @@
       {/each}
     {/if}
     <div class="flex gap-2 justify-between items-center align-center">
-      <input
-        class="px-2 py-1 bg-gray-100 rounded-md"
-        type="text"
-        name="todoInput"
-        id="todoInput"
-        bind:this={inputTarget}
-        bind:value={todoInput}
-        placeholder="Add a new todo"
-      />
-      <button
-        disabled={!todoInput}
-        class={`p-1 bg-blue-600 text-white rounded-md cursor-pointer ${
-          !todoInput ? "bg-gray-300" : ""
-        }`}
-        on:click={addTodo}>Add</button
-      >
+      <form on:submit={event => addTodo(event)}>
+        <input
+          class="px-2 py-1 bg-gray-100 rounded-md"
+          type="text"
+          name="todoInput"
+          id="todoInput"
+          bind:this={inputTarget}
+          bind:value={todoInput}
+          placeholder="Add a new todo"
+        />
+        <button
+          disabled={!todoInput}
+          class={`p-1 bg-blue-600 text-white rounded-md cursor-pointer ${
+            !todoInput ? "bg-gray-300" : ""
+          }`}
+          on:click={event => addTodo(event)}>Add</button
+        >
+      </form>
     </div>
     {#if todos.length > 0}
       <ul>
         {#each todos as todo, index}
           <li class="my-1 flex gap-2 justify-between items-center align-center">
             <div>
-              <input type="checkbox" name="" id="" bind:checked={todo.checked} />
+              <input
+                type="checkbox"
+                name=""
+                id=""
+                bind:checked={todo.checked}
+              />
               <span class={`${todo.checked ? "line-through" : ""}`}
                 >{index + 1} - {todo.text}</span
               >
