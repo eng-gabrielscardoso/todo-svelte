@@ -6,7 +6,7 @@
 
   onMount(() => inputTarget.focus());
 
-  function addTodo(event): void {
+  function addTodo(event: Event): void {
     event.preventDefault();
 
     if (todoInput.length < 3) {
@@ -24,12 +24,12 @@
     }
   }
 
-  function removeTodo(index): void {
+  function removeTodo(index: number): void {
     todos.splice(index, 1);
     todos = [...todos];
   }
 
-  function removeError(index): void {
+  function removeError(index: number): void {
     errors.splice(index, 1);
     errors = [...errors];
   }
